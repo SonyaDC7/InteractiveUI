@@ -11,6 +11,7 @@ struct ContentView: View {
     
     @State private var name = ""
     @State private var textTitle = "What is your name?"
+    @State private var date = ""
     
     var body: some View {
         VStack { //start vstack
@@ -21,10 +22,20 @@ struct ContentView: View {
                 .multilineTextAlignment(.center)
                 .font(.title)
                 .border(Color.gray, width: 1)
-            Button("Submit Name") {
-                if name == "" {print("**field required")}
+            
+            Text("What is your birthday?")
+                .font(.title)
+            
+            TextField("MM/DD/YYYY...", text: $date)
+                .multilineTextAlignment(.center)
+                .font(.title)
+                .border(Color.gray, width: 1)
+            
+            
+            Button("Submit Information") {
+                if name == "" {print("**required field")}
                 else {
-                    print("Welcome, \(name)!")}
+                    print("Welcome, \(name)! You were born on \(date).")}
             }//end button
             .font(.title2)
             .buttonStyle(.borderedProminent)
